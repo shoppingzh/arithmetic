@@ -8,12 +8,12 @@ public class SelectionSort {
 
 	public static void main(String[] args) {
 		System.out.println(Arrays.toString(arr));
-		sort(arr, true);
+//		sort(arr, true);
 		sort2(arr, true);
 		System.out.println(Arrays.toString(arr));
 	}
 
-	private static void sort2(int[] arr, boolean desc) {
+	static void sort2(int[] arr, boolean desc) {
 		int len = arr.length;
 		for (int i = 0; i < len - 1; i++) {
 			int k = i;
@@ -30,7 +30,7 @@ public class SelectionSort {
 		}
 	}
 
-	private static void sort(int[] arr, boolean desc) {
+	static void sort(int[] arr, boolean desc) {
 		int len = arr.length;
 		for (int i = 0; i < len - 1; i++) {
 			int k = i;
