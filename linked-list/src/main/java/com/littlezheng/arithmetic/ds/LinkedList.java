@@ -121,18 +121,19 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("[");
-        this.forEach(new Consumer<E>() {
-            @Override
-            public void on(int index, E e) {
-                sb.append(e + ",");
-            }
-        });
-        int len = sb.length();
-        if (sb.charAt(len - 1) == ',') {
-            sb.deleteCharAt(len - 1);
+        if (size <= 0) {
+            return "[]";
         }
-        sb.append("]");
+
+        StringBuilder sb = new StringBuilder("[");
+        Node<E> f = first;
+        while (f != null) {
+            E e = f.item;
+            sb.append(e == this ? "(this collection)" : f.item).append(", ");
+            f = f.next;
+        }
+        int len = sb.length();
+        sb.delete(len - 2, len).append("]");
         return sb.toString();
     }
 
@@ -154,6 +155,12 @@ public class LinkedList<E> implements List<E> {
             this.prev = prev;
             this.next = next;
         }
+
+        @Override
+        public String toString() {
+            return "Node [item=" + item + ", prev=" + prev + ", next=" + next + "]";
+        }
+
     }
 
 }
